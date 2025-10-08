@@ -39,7 +39,11 @@ module "vpc" {
     environment = "development"
   }
 }
-
+module "s3_bucket" {
+   source  = "app.terraform.io/policy-as-code-training/terraform-aws-s3-bucket-AP/aws"
+  version = "1.0.0"
+  bucket_name = "my-bucket-anija"
+}
 module "app_security_group" {
   source  = "terraform-aws-modules/security-group/aws//modules/web"
   version = "3.17.0"
