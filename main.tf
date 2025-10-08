@@ -1,15 +1,17 @@
 terraform {
-  cloud {
+ /* cloud {
     organization = "policy-as-code-training"
     workspaces {
       name = "tf-vault-qa-ap"
     }
-  }
+  }*/
   required_providers {
     aws = {
       source  = "hashicorp/aws"
+      version = "`>3.28.0"
     }
   }
+  required_version = ">=0.14.0"
 }
 provider "aws" {
   region  = "us-west-1"
@@ -34,7 +36,7 @@ module "vpc" {
 
   tags = {
     project     = "project-alpha",
-    environment = "dev"
+    environment = "development"
   }
 }
 
